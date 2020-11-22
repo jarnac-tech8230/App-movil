@@ -1,0 +1,47 @@
+<resources>
+
+
+    <string name="lorem1">lLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamA</string>
+    <string name="lorem2">nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </string>
+    <string name="app_name">Mi hogar</string>
+    <string name="site">www.mi-hogar.cl</string>
+    <string name="dashboard_screen">Dashboard Screen</string>
+    <string name="inicio_nav">Inicio</string>
+    <string name="categorias_nav">Categorías</string>
+    <string name="busqueda_nav">Busqueda</string>
+    <string name="contacto_nav">Contacto</string>
+    <string name="ayuda_nav">Ayuda</string>
+    <string name="vip_freemuim_nav">VIP freemuim</string>
+    <string name="perfil_nav">Perfil</string>
+    <string name="iniciar_sesi_nav">Iniciar sesión</string>
+    <string name="mi_cuenta_nav">Mi cuenta</string>
+    <string name="cerrar_sesi_nav">Cerrar sesión</string>
+    <string name="menu_slogan">TODO</string>
+
+    <string name="menu_btn">menu_btn</string>
+    <string name="iniciarSesion">Iniciar sesión</string>
+    <string name="register">Registrate</string>
+    <string name="recuperar">¿Olvidaste tu contraseña?</string>
+    <string name="nombreCompleto">Nombre completo</string>
+    <string name="email">Email</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="recuerdame">Mantener la sesión iniciada</string>
+    <string name="retail_1">1/3</string>
+    <string name="next">Siguiente</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
+    <string name="sexo">Elige tu sexo</string>
+    <string name="retail_2">2/3</string>
+    <string name="retail_3">3/3</string>
+    <string name="numero">número</string>
+    <string name="flecha">flecha</string>
+    <string name="buscar">Encuentra tu propiedad</string>
+    <string name="notificacion">Notificaciones</string>
+    <string name="descripcion">asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas</string>
+    <string name="tel">+56 2 2938 0093\n+56 2 2952 3636</string>
+    <string name="mail_company">contacto@elpestechnology.cl</string>
+    <string name="back">retrocede</string>
+
+
+</resources>

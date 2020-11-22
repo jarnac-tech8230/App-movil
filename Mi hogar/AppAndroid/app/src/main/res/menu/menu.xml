@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <group android:checkableBehavior="single" >
+
+        <item android:id="@+id/nav_home"
+            android:title="@string/inicio_nav"
+            android:icon="@drawable/home" />
+
+        <item android:id="@+id/nav_busqueda"
+            android:title="@string/busqueda_nav"
+            android:icon="@drawable/busqueda" />
+
+        <item android:id="@+id/nav_categoria"
+            android:title="@string/categorias_nav"
+            android:icon="@drawable/categoria" />
+
+        <item android:id="@+id/nav_contacto"
+            android:title="@string/contacto_nav"
+            android:icon="@drawable/contacto" />
+
+        <item android:id="@+id/nav_ayuda"
+            android:title="@string/ayuda_nav"
+            android:icon="@drawable/ayuda" />
+        <item android:id="@+id/nav_freemuim"
+            android:title="@string/vip_freemuim_nav"
+            android:icon="@drawable/vip" />
+    </group>
+
+
+    <item android:title="@string/perfil_nav">
+        <menu>
+            <group>
+                <item android:id="@+id/nav_login"
+                    android:title="@string/iniciar_sesi_nav"
+                    android:icon="@drawable/lock"
+                    />
+
+                <item android:id="@+id/nav_perfil"
+                    android:title="@string/mi_cuenta_nav"
+                    android:icon="@drawable/cuenta" />
+
+                <item android:id="@+id/nav_logout"
+                    android:title="@string/cerrar_sesi_nav"
+                    android:icon="@drawable/logout" />
+            </group>
+        </menu>
+    </item>
+</menu>
