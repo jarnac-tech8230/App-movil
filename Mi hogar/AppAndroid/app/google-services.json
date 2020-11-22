@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "545796276580",
+    "firebase_url": "https://mi-hogar-2020.firebaseio.com",
+    "project_id": "mi-hogar-2020",
+    "storage_bucket": "mi-hogar-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545796276580:android:9f8b8e3fa0b68aa28c7a71",
+        "android_client_info": {
+          "package_name": "com.example.mihogar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545796276580-ajs0isbujba9suaostfp79gh2qfrkhm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPE8mHcPtfpXJB3xHT-rPu5RgT51XQmCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545796276580-ajs0isbujba9suaostfp79gh2qfrkhm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
