@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ccb8242-2ad4-4046-943e-176804fab42a" name="Default Changelist" comment="" />
+    <list default="true" id="85bf581a-47da-4284-b21e-c46add909e4f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppAndroid/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/AppAndroid/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppAndroid/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AppAndroid/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="1kCzZIlWbi2ydByqMIDSJLp1mfo" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1keG6EhcoaUurC9vo5i6D1I3LhF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,11 +33,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4ccb8242-2ad4-4046-943e-176804fab42a" name="Default Changelist" comment="" />
-      <created>1605219414384</created>
+      <changelist id="85bf581a-47da-4284-b21e-c46add909e4f" name="Default Changelist" comment="" />
+      <created>1606053465680</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1605219414384</updated>
+      <updated>1606053465680</updated>
     </task>
     <servers />
   </component>

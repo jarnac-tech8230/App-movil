@@ -1,6 +1,5 @@
 package com.example.mihogar.HelperClasses;
 
-import android.widget.Button;
 
 public class Help_1 {
     //Inicializacion de los variableas
@@ -13,6 +12,7 @@ public class Help_1 {
         this.title = title;
         this.description = description;
     }
+
 
 
 //hooks de los variables

@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.mihogar.HelperClasses.FeaturedAdapter;
+import com.example.mihogar.HelperClasses.FeaturedAdapterMost;
 import com.example.mihogar.HelperClasses.Help_1;
 import com.example.mihogar.R;
 import com.example.mihogar.Common.Login_register.LoginActivity;
@@ -35,8 +36,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     NavigationView navigationView;
     ImageView menuBtn;
     LinearLayout contentView;
-    RecyclerView featureCard;
-//    RecyclerView featuredRecycler, mostViewedRecycler, categoriesRecycler;
+    RecyclerView featureCard, mostViewedRecycler;
     Adapter adapter;
 //    private GradientDrawable gradient1, gradient2, gradient3, gradient4;
 
@@ -54,8 +54,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         menuBtn = findViewById(R.id.btn_menu);
         contentView = findViewById(R.id.content);
         featureCard = findViewById(R.id.featured_recycler);
+        mostViewedRecycler = findViewById(R.id.RecyclermostView);
         navigationDrawer();
         featureRecycle();
+        RecyclermostView();
 
 
     }
@@ -109,6 +111,13 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     public void notificacion(View view) {
         startActivity(new Intent(this, NotifyActivity.class));
     }
+
+    public void itemvista(View view) {
+        startActivity(new Intent(this, Item_activity.class));
+    }
+
+
+
 
 
     @Override
@@ -178,6 +187,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
 
 
+
+
+
     private void featureRecycle() {
         featureCard.setHasFixedSize(true);
         featureCard.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -189,8 +201,32 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredLocations.add(new Help_1(R.drawable.casa3, "Edenrobe", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
         featuredLocations.add(new Help_1(R.drawable.casa8, "Walmart", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
 
+        featuredLocations.add(new Help_1(R.drawable.casa3, "Jarnac's", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa1, "Edenrobe", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa8, "Walmart", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+
         adapter = new FeaturedAdapter(featuredLocations);
         featureCard.setAdapter(adapter);
+    }
+
+
+    private void RecyclermostView() {
+        mostViewedRecycler.setHasFixedSize(true);
+        mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+
+        ArrayList<Help_1> featuredLocations = new ArrayList<>();
+
+        featuredLocations.add(new Help_1(R.drawable.casa1, "Jarnac's", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa3, "Edenrobe", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa8, "Walmart", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+
+        featuredLocations.add(new Help_1(R.drawable.casa3, "Jarnac's", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa1, "Edenrobe", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa8, "Walmart", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+
+        adapter = new FeaturedAdapterMost(featuredLocations);
+        mostViewedRecycler.setAdapter(adapter);
     }
 
 }

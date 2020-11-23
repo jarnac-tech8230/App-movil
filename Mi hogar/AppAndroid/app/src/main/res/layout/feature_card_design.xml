@@ -4,44 +4,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="200dp"
-    android:layout_height="280dp"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="8dp">
+    android:layout_height="290dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp"
+    android:layout_margin="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="4dp">
 
 
         <ImageView
             android:id="@+id/featured_image"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/casa1" />
 
-        <TextView
-            android:id="@+id/featured_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineHeight="23dp"
-            android:text="Nombre casa"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            tools:targetApi="p" />
-        <RatingBar
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rating="3.5" />
-        <TextView
-            android:id="@+id/featured_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/descripcion" />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/featured_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineHeight="23dp"
+        android:textStyle="bold"
+        android:text="Nombre casa"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        tools:targetApi="p" />
+
+    <TextView
+        android:id="@+id/featured_desc"
+        android:layout_below="@+id/featured_title"
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:text="@string/descripcion" />
+
+</RelativeLayout>
 
     </LinearLayout>
 

@@ -44,39 +44,43 @@
                 android:orientation="vertical">
 
 
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/colorPrimary">
+                    android:background="@color/plomo">
 
                     <LinearLayout
                         android:id="@+id/featured_background"
-                        android:layout_width="170dp"
+                        android:layout_width="140dp"
                         android:layout_height="289dp"
                        android:layout_margin="5dp"
-                        android:background="@color/plomo"
-                        android:orientation="vertical">
+                        android:background="@drawable/back"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="50dp"
+                            android:layout_marginTop="5dp"
                             android:lineHeight="24sp"
-                            android:text="lorem ispsu"
-                            android:textStyle="bold"
+                            android:text="\nN\no\nv\ne\nd\na\nd\ne\ns"
                             android:textAllCaps="true"
-                            android:textColor="@color/black"
-                            android:textSize="25sp"
+                            android:textColor="#fff"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:id="@+id/text_novedad"
                             tools:targetApi="p" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:text="@string/descripcion"
+                            android:layout_gravity="center"
+                            android:textSize="12dp"
+                            android:text="uwhfkjasbhgdjsbvhjdsbvfsdbvndfsjnvsndmvjdsbkvmsfdjbvfdsbnvmdsfvbjdmfsvn \n \nfbdsmvfdkjsbvfhsdbvmnfdsmbvhfbdsmvn fsdsdbvmvfsdhbvfshdbvhfmsdbvhfsdbmv "
                             android:textColor="@color/black" />
 
 
@@ -85,8 +89,9 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/featured_recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp"
                         android:layout_toEndOf="@id/featured_background"
+                        android:layout_height="300dp"
+                        android:onClick="itemvista"
                         android:background="@color/lightWhite" />
 
                 </RelativeLayout>
@@ -174,43 +179,10 @@
                     </RelativeLayout>
 
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        tools:ignore="UselessParent">
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Los más vistos"
-                            android:textAllCaps="true"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="ver más"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp"
-                            android:textStyle="italic"
-
-                            />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-
-                    </RelativeLayout>
 
                     <androidx.cardview.widget.CardView
+                        android:onClick="itemvista"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -403,6 +375,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:onClick="itemvista"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -595,6 +568,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:onClick="itemvista"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -786,11 +760,52 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        tools:ignore="UselessParent">
 
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Los más vistos"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/text_most"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="ver más"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="italic"
+
+                            />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/RecyclermostView"
+                            android:layout_below="@+id/text_most"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                    </RelativeLayout>
                 </LinearLayout>
 
 
             </LinearLayout>
+
+
+
         </ScrollView>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
