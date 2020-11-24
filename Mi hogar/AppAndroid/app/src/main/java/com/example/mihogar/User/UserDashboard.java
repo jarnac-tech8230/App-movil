@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.mihogar.Common.SplashScreen;
 import com.example.mihogar.HelperClasses.FeaturedAdapter;
@@ -46,11 +47,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-//        Bundle p = getIntent().getExtras();
 
-
-//        String value1 = p.getString("loginArray").toString();
-        Log.i("Array", "value1");
 //Hooks
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.layoutDrawer);
@@ -62,7 +59,26 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featureRecycle();
         RecyclermostView();
 
+        Bundle p = getIntent().getExtras();
 
+
+        if (p != null){
+//            Log.i("Array", p.getString("loginArray"));
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("!Bienvenido!\n Correo ingresado es : "+ p.getString("loginArray"));
+            alertDialogBuilder.setPositiveButton("Aceptar",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                        Toast.makeText(UserDashboard.this,"Disfrute la app", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
 //        textView.setText(String.valueOf(numbersList));
 
     }
