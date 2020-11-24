@@ -143,9 +143,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
-                startActivity(intent);
-                finish();
+               onDestroy();
             }
         }, 180000);
     }
