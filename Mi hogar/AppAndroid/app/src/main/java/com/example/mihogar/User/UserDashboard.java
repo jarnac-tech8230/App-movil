@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.mihogar.Common.SplashScreen;
 import com.example.mihogar.HelperClasses.FeaturedAdapter;
 import com.example.mihogar.HelperClasses.FeaturedAdapterMost;
 import com.example.mihogar.HelperClasses.Help_1;
@@ -41,13 +42,15 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 //    private GradientDrawable gradient1, gradient2, gradient3, gradient4;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+//        Bundle p = getIntent().getExtras();
 
 
+//        String value1 = p.getString("loginArray").toString();
+        Log.i("Array", "value1");
 //Hooks
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.layoutDrawer);
@@ -59,6 +62,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featureRecycle();
         RecyclermostView();
 
+
+//        textView.setText(String.valueOf(numbersList));
 
     }
 
@@ -108,6 +113,29 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     }
 
 
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 180000);
+    }
+
+
+
     public void notificacion(View view) {
         startActivity(new Intent(this, NotifyActivity.class));
     }
@@ -115,9 +143,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     public void itemvista(View view) {
         startActivity(new Intent(this, Item_activity.class));
     }
-
-
-
 
 
     @Override
@@ -131,29 +156,28 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     }
 
 
-        public void salir() {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("¿Estás seguro que deseas salir ?");
-            alertDialogBuilder.setPositiveButton("Salir",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
-                           finish();
+    public void salir() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("¿Estás seguro que deseas salir ?");
+        alertDialogBuilder.setPositiveButton("Salir",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
 //                        Toast.makeText(SplashScreen.this,"You clicked yes button",Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    }
+                });
 
-            alertDialogBuilder.setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+        alertDialogBuilder.setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-                }
-            });
+            }
+        });
 
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-        }
-
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
 
 
     @Override
@@ -172,22 +196,17 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_contacto:
                 startActivity(new Intent(getApplicationContext(), ContactoActivity.class));
-                break;
-            case R.id.nav_ayuda:
-                startActivity(new Intent(getApplicationContext(), AyudaActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
         }
 
         return true;
     }
-
-
-
-
 
 
     private void featureRecycle() {

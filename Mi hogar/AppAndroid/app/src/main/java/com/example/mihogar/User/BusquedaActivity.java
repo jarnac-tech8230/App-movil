@@ -7,12 +7,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.mihogar.Common.Login_register.LoginActivity;
+import com.example.mihogar.Common.SplashScreen;
 import com.example.mihogar.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -91,7 +93,18 @@ public class BusquedaActivity extends AppCompatActivity implements NavigationVie
     }
 
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 180000);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -109,12 +122,11 @@ public class BusquedaActivity extends AppCompatActivity implements NavigationVie
                 break;
             case R.id.nav_contacto:
                 startActivity(new Intent(getApplicationContext(), ContactoActivity.class));
-                break;
-            case R.id.nav_ayuda:
-                startActivity(new Intent(getApplicationContext(), AyudaActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_login :
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
         }

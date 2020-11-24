@@ -759,46 +759,51 @@
 
 
                     </androidx.cardview.widget.CardView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        tools:ignore="UselessParent">
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Los más vistos"
-                            android:textAllCaps="true"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-
-                            />
-
-                        <TextView
-                            android:id="@+id/text_most"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="ver más"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp"
-                            android:textStyle="italic"
-
-                            />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/RecyclermostView"
-                            android:layout_below="@+id/text_most"
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                    <include
+                        android:id="@+id/masVista"
+                        layout="@layout/mas_visto"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        tools:ignore="UselessParent">-->
 
 
-                    </RelativeLayout>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Los más vistos"-->
+<!--                            android:textAllCaps="true"-->
+<!--                            android:textColor="@color/colorPrimary"-->
+<!--                            android:textSize="20sp"-->
+<!--                            android:textStyle="bold"-->
+
+<!--                            />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/text_most"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentEnd="true"-->
+<!--                            android:text="ver más"-->
+<!--                            android:textColor="@color/colorPrimary"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="italic"-->
+
+<!--                            />-->
+
+<!--                        <androidx.recyclerview.widget.RecyclerView-->
+<!--                            android:id="@+id/RecyclermostView"-->
+<!--                            android:layout_below="@+id/text_most"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" />-->
+
+
+<!--                    </RelativeLayout>-->
                 </LinearLayout>
 
 

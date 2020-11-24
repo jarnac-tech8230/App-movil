@@ -879,6 +879,14 @@
 
                     </androidx.cardview.widget.CardView>
 
+
+
+                    <include
+                        android:id="@+id/masVista"
+                        layout="@layout/mas_visto"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
 
 

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +20,8 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.example.mihogar.Common.Login_register.LoginActivity;
+import com.example.mihogar.Common.SplashScreen;
+import com.example.mihogar.HelperClasses.FeaturedAdapterMost;
 import com.example.mihogar.HelperClasses.FeaturedCaroussel;
 import com.example.mihogar.HelperClasses.Help_1;
 import com.example.mihogar.HelperClasses.Help_2;
@@ -35,6 +38,7 @@ public class Item_activity extends AppCompatActivity implements NavigationView.O
     NavigationView navigationView;
     ImageView menuBtn;
     LinearLayout contentView;
+    RecyclerView mostViewedRecycler;
 
 
     @Override
@@ -47,11 +51,13 @@ public class Item_activity extends AppCompatActivity implements NavigationView.O
         menuBtn = findViewById(R.id.btn_menu);
         contentView = findViewById(R.id.content);
 
+        mostViewedRecycler = findViewById(R.id.RecyclermostView);
+
         featureItem = findViewById(R.id.featured_recycler_item);
 
 
         VideoView videoView = findViewById(R.id.video);
-        String pathVideo  ="android.resource://" + getPackageName() + "/" +R.raw.video1;
+        String pathVideo = "android.resource://" + getPackageName() + "/" + R.raw.video1;
         Uri uri = Uri.parse(pathVideo);
         videoView.setVideoURI(uri);
         MediaController mediaController = new MediaController(this);
@@ -62,20 +68,13 @@ public class Item_activity extends AppCompatActivity implements NavigationView.O
     }
 
 
-
-
-
     @Override
     protected void onStart() {
         super.onStart();
         navigationDrawer();
         featureRecycle();
-
-
+        RecyclermostView();
     }
-
-
-
 
 
     private void navigationDrawer() {
@@ -122,7 +121,18 @@ public class Item_activity extends AppCompatActivity implements NavigationView.O
 
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 180000);
+    }
 
     private void featureRecycle() {
         featureItem.setHasFixedSize(true);
@@ -163,12 +173,11 @@ public class Item_activity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_contacto:
                 startActivity(new Intent(getApplicationContext(), ContactoActivity.class));
-                break;
-            case R.id.nav_ayuda:
-                startActivity(new Intent(getApplicationContext(), AyudaActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
         }
@@ -193,6 +202,26 @@ public class Item_activity extends AppCompatActivity implements NavigationView.O
         startActivity(new Intent(getApplicationContext(), MapsActivity.class));
 
 
+    }
+
+
+    private void RecyclermostView() {
+        mostViewedRecycler.setHasFixedSize(true);
+        mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+
+        ArrayList<Help_1> featuredLocations = new ArrayList<>();
+
+        featuredLocations.add(new Help_1(R.drawable.casa1, "Jarnac's", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa3, "Edenrobe", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa8, "Walmart", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+
+        featuredLocations.add(new Help_1(R.drawable.casa3, "Jarnac's", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa1, "Edenrobe", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+        featuredLocations.add(new Help_1(R.drawable.casa8, "Walmart", "asbkd asudhlasn saudnas jasdjasl hisajdl asjdlnas"));
+
+        adapter = new FeaturedAdapterMost(featuredLocations);
+        mostViewedRecycler.setAdapter(adapter);
     }
 }
 

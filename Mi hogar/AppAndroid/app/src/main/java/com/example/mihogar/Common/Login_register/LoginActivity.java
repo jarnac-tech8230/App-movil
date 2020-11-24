@@ -12,7 +12,7 @@ import com.example.mihogar.User.UserDashboard;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
-Button registro;
+    Button registro;
     TextInputLayout email, password;
 
 
@@ -41,19 +41,24 @@ Button registro;
         startActivity(new Intent(getApplicationContext(), RegisterSession_1.class));
         finish();
     }
+
     public void retroceder(View view) {
-       LoginActivity.super.finish();
-       startActivity(new Intent(getApplicationContext(), UserDashboard.class));
+        LoginActivity.super.finish();
+        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
         finish();
 
     }
 
     public void inicio(View view) {
-        if (!validateEmail() | !validatePassword() ) {
+        if (!validateEmail() | !validatePassword()) {
             return;
         }
-        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-        finish();
+
+        Intent intent = new Intent(LoginActivity.this, UserDashboard.class);
+        intent.putExtra("loginArray", email.getEditText().getText().toString());
+
+        startActivity(intent);
+//        finish();
     }
 
     private boolean validateEmail() {
