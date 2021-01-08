@@ -21,17 +21,29 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.mihogar.Common.SplashScreen;
+import com.example.mihogar.Entity.ItemsEntity;
 import com.example.mihogar.HelperClasses.FeaturedAdapter;
 import com.example.mihogar.HelperClasses.FeaturedAdapterMost;
 import com.example.mihogar.HelperClasses.Help_1;
 import com.example.mihogar.R;
 import com.example.mihogar.Common.Login_register.LoginActivity;
+import com.example.mihogar.Retrofit.APiClassService;
+import com.example.mihogar.Retrofit.ApiClient;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    ApiClient apiClient;
+    APiClassService aPiClassService;
 
     static final float END_SCALE = 0.7f;
     DrawerLayout drawerLayout;
@@ -48,6 +60,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+
 //Hooks
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.layoutDrawer);
@@ -58,20 +71,22 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         navigationDrawer();
         featureRecycle();
         RecyclermostView();
+        retrofitInit();
+         buscarProductos();
 
         Bundle p = getIntent().getExtras();
 
 
-        if (p != null){
+        if (p != null) {
 //            Log.i("Array", p.getString("loginArray"));
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("!Bienvenido!\n Correo ingresado es : "+ p.getString("loginArray"));
+            alertDialogBuilder.setMessage("!Bienvenido!\n Correo ingresado es : " + p.getString("loginArray"));
             alertDialogBuilder.setPositiveButton("Aceptar",
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(UserDashboard.this,"Disfrute la app", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UserDashboard.this, "Disfrute la app", Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -129,11 +144,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     }
 
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
+
+
     }
 
 
@@ -143,11 +158,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               onDestroy();
+                onDestroy();
             }
         }, 180000);
     }
-
 
 
     public void notificacion(View view) {
@@ -177,7 +191,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        finish();
+                        onDestroy();
 //                        Toast.makeText(SplashScreen.this,"You clicked yes button",Toast.LENGTH_LONG).show();
                     }
                 });
@@ -260,6 +274,44 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
         adapter = new FeaturedAdapterMost(featuredLocations);
         mostViewedRecycler.setAdapter(adapter);
+    }
+
+
+    public void buscarProductos() {
+
+        Call<List<ItemsEntity>> call = aPiClassService.listaItem();
+
+        call.enqueue(new Callback<List<ItemsEntity>>() {
+            @Override
+            public void onResponse(Call<List<ItemsEntity>> call, Response<List<ItemsEntity>> response) {
+                //Todo esta OK
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(UserDashboard.this, "llegando Ok", Toast.LENGTH_SHORT).show();
+//                    List<ProductoEntity> productoEntities = new ArrayList<>();
+//                    productoEntities = response.body();
+//
+//                    productoEntities.forEach(productoEntity -> System.out.println("Imprimiendo Lote: "+ productoEntity.getLote()));
+//
+
+                } else {
+                    Toast.makeText(UserDashboard.this, "Problema pero fue 200", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ItemsEntity>> call, Throwable t) {
+                Toast.makeText(UserDashboard.this, "Problema de conexion", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    public void retrofitInit() {
+        apiClient = ApiClient.getInstance();
+        aPiClassService = apiClient.getaPiClassService();
     }
 
 }

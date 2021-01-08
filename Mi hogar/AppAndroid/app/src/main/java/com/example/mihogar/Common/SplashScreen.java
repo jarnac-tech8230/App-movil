@@ -26,7 +26,7 @@ import static android.net.ConnectivityManager.TYPE_WIFI;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int splash_screen = 5000;
+    private static int splash_screen = 3000;
     ImageView image;
     Animation bottom_ani;
 

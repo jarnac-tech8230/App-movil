@@ -5,14 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.mihogar.Entity.ResponseEntity;
+import com.example.mihogar.Entity.UserRegister;
 import com.example.mihogar.R;
+import com.example.mihogar.Retrofit.APiClassService;
+import com.example.mihogar.Retrofit.ApiClient;
 import com.example.mihogar.User.UserDashboard;
 import com.google.android.material.textfield.TextInputLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterSession_3 extends AppCompatActivity {
 
     TextInputLayout phoneNumber;
+    ApiClient apiClient;
+    APiClassService aPiClassService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +49,9 @@ public class RegisterSession_3 extends AppCompatActivity {
         if (!validatePhoneNumber()) {
         return;
     }
-        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-        finish();
+        retrofitInit();
+        registrarUsuario();
+
     }
 
 
@@ -63,4 +75,47 @@ public class RegisterSession_3 extends AppCompatActivity {
 
     }
 
+
+    private void registrarUsuario()
+    {
+
+        //validar los campos
+        String telefono = phoneNumber.getEditText().getText().toString().trim();
+
+
+        UserRegister userRegisterEntity = new UserRegister();
+
+        Call<ResponseEntity> call = aPiClassService.RegistrarUsuario(userRegisterEntity);
+
+        call.enqueue(new Callback<ResponseEntity>() {
+            @Override
+            public void onResponse(Call<ResponseEntity> call, Response<ResponseEntity> response) {
+                if(response.isSuccessful())
+                {
+
+                    ResponseEntity ResponseEntity = response.body();
+
+                    if (ResponseEntity.getCode()== 200 && ResponseEntity.getMsg()== "ok" ){
+                        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
+                        finish();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(RegisterSession_3.this, "Hubo un error", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseEntity> call, Throwable t) {
+                Toast.makeText(RegisterSession_3.this, "Problema de conexion, Intente Luego", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void retrofitInit() {
+        apiClient = ApiClient.getInstance();
+        aPiClassService = apiClient.getaPiClassService();
+    }
 }
